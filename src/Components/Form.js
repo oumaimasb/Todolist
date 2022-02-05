@@ -1,6 +1,8 @@
 import "../App.scss";
 import React, { useState } from "react";
-import AddIcon from "@material-ui/icons/Add";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, InputGroup, FormControl } from "react-bootstrap";
+import DoneIcon from "@material-ui/icons/Done";
 
 const Form = React.memo((props) => {
   const [input, setInput] = useState([]);
@@ -15,21 +17,25 @@ const Form = React.memo((props) => {
     setInput([]);
   };
   return (
-    <form className="task" onSubmit={submitHandler}>
-      <div className="task-box">
-        <input
-          value={input}
-          onChange={updateInput}
-          type="text"
-          className="task-bar"
-          id="task"
-          placeholder="Task"
-        />
-        <button className="task-button" type="submit">
-          <AddIcon />
-        </button>
-      </div>
-    </form>
+    <InputGroup className="mb-3 task">
+      <FormControl
+        className="task-bar"
+        value={input}
+        onChange={updateInput}
+        type="text"
+        id="task"
+        placeholder="Task"
+      />
+      <Button
+        className="task-button"
+        type="submit"
+        onClick={submitHandler}
+        variant="outline-secondary"
+        id="button-addon2"
+      >
+        <DoneIcon />
+      </Button>
+    </InputGroup>
   );
 });
 

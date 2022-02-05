@@ -1,17 +1,22 @@
 import React from "react";
-import "../App.scss";
+// import "../App.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ListGroup, CloseButton } from "react-bootstrap";
 
 const TodoList = (props) => {
   return (
-    <div className="task-list">
-      <ul>
+    <div className="container ">
+      <ListGroup variant="flush">
         {props.todos.map((ig) => (
-          <li key={ig.id} onClick={props.onRemove.bind(this, ig.id)}>
+          <ListGroup.Item key={ig.id}>
             <span>{ig.task}</span>
-            <button className="task-button">x</button>
-          </li>
+            <CloseButton
+              className="closebutton"
+              onClick={props.onRemove.bind(this, ig.id)}
+            />
+          </ListGroup.Item>
         ))}
-      </ul>
+      </ListGroup>
     </div>
   );
 };
